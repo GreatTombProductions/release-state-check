@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release State Check — Does the Dataset Behind This DOI Have a Public Record?</title>
+<meta name="description" content="Paste a dataset DOI. See whether it resolves, whether its registry has a public record for it, which version the record names, and whether a newer record exists — read live from doi.org, DataCite and Crossref, with the time of the read.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#result">Skip to result</a>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">For anyone deciding whether to wait for, cite, or pay for a public dataset</p>
+    <h1>Release State Check</h1>
+    <p class="lede">A catalogue lists a new version. The paper cites a DOI. The download page offers something else, or nothing. <strong>Has the release actually been published, or only announced?</strong> Paste the DOI. This page asks the DOI system and the registry directly and tells you what each one says, with the time it asked.</p>
+    <p class="privacy">No account. Nothing is stored. Your browser asks doi.org, DataCite and Crossref directly; this site never sees the DOI you check. <a href="method.html">How it reads, and what it cannot see</a></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form id="form" class="card ask" autocomplete="off">
+    <label class="label-text" for="doi">Dataset DOI</label>
+    <div class="ask-row">
+      <input id="doi" name="doi" type="text" inputmode="url" spellcheck="false" placeholder="10.5281/zenodo.20424537 or https://doi.org/…" required>
+      <button type="submit" class="btn primary" id="btnCheck">Check</button>
+    </div>
+    <p class="hint">Try a record that resolves but is not public:
+      <a href="?doi=10.48690%2Fhe9y-d243">10.48690/he9y-d243</a>.
+      One with a public record: <a href="?doi=10.5281%2Fzenodo.20424537">10.5281/zenodo.20424537</a>.
+      These are live reads, so what you see is today’s state, not ours.</p>
+  </form>
+
+  <section id="result" class="result" aria-live="polite" hidden></section>
+
+  <section class="card">
+    <h2>What the answer means</h2>
+    <table class="states">
+      <thead><tr><th>You see</th><th>The DOI resolves</th><th>Public registry record</th><th>Read it as</th></tr></thead>
+      <tbody>
+        <tr><td>Not registered</td><td data-label="Resolves">No</td><td data-label="Public record">—</td><td data-label="Read it as">Announced or misprinted. The identifier was never created.</td></tr>
+        <tr><td>Registered, no public record</td><td data-label="Resolves">Yes</td><td data-label="Public record">No</td><td data-label="Read it as">Created ahead of release, or withdrawn from listing. Not evidence the release exists.</td></tr>
+        <tr><td>Public record</td><td data-label="Resolves">Yes</td><td data-label="Public record">Yes</td><td data-label="Read it as">The publisher has declared it. Files are a separate question.</td></tr>
+        <tr><td>Public record, newer named</td><td data-label="Resolves">Yes</td><td data-label="Public record">Yes</td><td data-label="Read it as">Declared, and already superseded.</td></tr>
+        <tr><td>Public record, update attached</td><td data-label="Resolves">Yes</td><td data-label="Public record">Yes</td><td data-label="Read it as">Declared, with a correction, addendum or retraction notice linked. Mostly articles.</td></tr>
+        <tr><td>Unknown</td><td colspan="2">A source did not answer</td><td data-label="Read it as">Nothing. A failed read is never shown as a state.</td></tr>
+      </tbody>
+    </table>
+    <p class="hint">The middle row is the one catalogues hide. A DOI can resolve for months with no public record behind it, and a citation that carries it looks exactly like a citation to a released dataset.</p>
+  </section>
+
+  <section class="card">
+    <h2>The half this page cannot do</h2>
+    <p>A registry record says what a publisher declared. It does not say what the download site hands out. Those disagree in both directions, and only the delivery side settles whether you can get the files. Three checks cover it, each a few minutes, none needing an account:</p>
+    <ol class="steps">
+      <li><strong>Read the download form, not the description.</strong> The list of years or versions the form offers is what is served.</li>
+      <li><strong>If a file address refuses you, try a sibling.</strong> Another dataset on the same host tells “this dataset is closed” apart from “this host refuses me”.</li>
+      <li><strong>Before trusting a mirror, compare a window.</strong> A copy hosted by someone else is usable once a sample matches what the producer serves.</li>
+    </ol>
+    <p><a href="method.html#delivery">The three delivery checks, step by step</a> · <a href="method.html#reads">Two worked reads from 11 November 2026</a> · <a href="check.py" download>check.py</a> (the same reader for the command line, plus the sibling check)</p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>A dated read of public sources. Release states change; a read is true for the time printed on it and not after. This page does not monitor anything and will not tell you when a state changes. It is not affiliated with any registry or publisher. <a href="method.html#sources">Sources</a> · <a href="https://github.com/GreatTombProductions/release-state-check">Code</a> (MIT)</p>
+</footer>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

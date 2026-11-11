@@ -1,0 +1,1039 @@
+{
+ "doi_cases": [
+  {
+   "name": "resolves, registry has no public record, prefix has siblings (captured 2026-11-11)",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/he9y-d243",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-09-15T11:30:09Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.48690/he9y-d243",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     404,
+     {
+      "errors": [
+       {
+        "status": "404"
+       }
+      ]
+     }
+    ],
+    "prefix": [
+     200,
+     {
+      "meta": {
+       "total": 86
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "resolves-no-public-record",
+    "findings": [
+     "landing-is-site-root",
+     "prefix-has-public-records"
+    ]
+   }
+  },
+  {
+   "name": "same, prefix list unreadable",
+   "input": "doi:10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/he9y-d243",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-09-15T11:30:09Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.48690/he9y-d243",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     404,
+     null
+    ],
+    "prefix": [
+     0,
+     null
+    ]
+   },
+   "expect": {
+    "code": "resolves-no-public-record",
+    "findings": [
+     "landing-is-site-root",
+     "prefix-not-read"
+    ]
+   }
+  },
+  {
+   "name": "same, prefix empty",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/he9y-d243",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-09-15T11:30:09Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.48690/he9y-d243",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     404,
+     null
+    ],
+    "prefix": [
+     200,
+     {
+      "meta": {
+       "total": 0
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "resolves-no-public-record",
+    "findings": [
+     "landing-is-site-root",
+     "prefix-has-no-public-records"
+    ]
+   }
+  },
+  {
+   "name": "public record, landing is a site front page (captured 2026-11-11)",
+   "input": "https://doi.org/10.48690/lsm/zew2-1n91",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/lsm/zew2-1n91",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-05-26T22:26:31Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.48690/lsm/zew2-1n91",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     {
+      "data": {
+       "attributes": {
+        "state": "findable",
+        "titles": [
+         {
+          "lang": "en",
+          "title": "LandScan Mosaic Annual Global Ambient Population Time Series, Version 1.0: 1975–2024",
+          "titleType": null
+         },
+         {
+          "lang": "en",
+          "title": "LandScan Mosaic Time Series",
+          "titleType": "AlternativeTitle"
+         }
+        ],
+        "version": "1.0",
+        "publicationYear": 2026,
+        "publisher": "Oak Ridge National Laboratory",
+        "registered": "2026-05-26T22:26:32.000Z",
+        "updated": "2026-05-27T20:04:48.000Z",
+        "url": "https://landscan.ornl.gov",
+        "sizes": [
+         "380 GB"
+        ],
+        "formats": [
+         "image/tiff"
+        ],
+        "rightsList": [
+         {
+          "rights": "Creative Commons Attribution 4.0 International",
+          "rightsUri": "https://creativecommons.org/licenses/by/4.0/legalcode",
+          "schemeUri": "https://spdx.org/licenses/",
+          "rightsIdentifier": "cc-by-4.0",
+          "rightsIdentifierScheme": "SPDX"
+         }
+        ],
+        "contentUrl": null,
+        "relatedIdentifiers": []
+       }
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "public-record",
+    "findings": [
+     "landing-is-site-root"
+    ]
+   }
+  },
+  {
+   "name": "public record that is one version of a parent (captured 2026-11-11)",
+   "input": "10.5281/zenodo.20424537.",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.5281/zenodo.20424537",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://zenodo.org/doi/10.5281/zenodo.20424537"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-06-08T11:03:20Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.5281/zenodo.20424537",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     {
+      "data": {
+       "attributes": {
+        "state": "findable",
+        "titles": [
+         {
+          "title": "World Settlement Footprint"
+         }
+        ],
+        "version": "20260101",
+        "publicationYear": 2026,
+        "publisher": "Source Cooperative",
+        "registered": "2026-06-08T11:03:20.000Z",
+        "updated": "2026-09-10T09:05:34.000Z",
+        "url": "https://zenodo.org/doi/10.5281/zenodo.20424537",
+        "sizes": [],
+        "formats": [],
+        "rightsList": [
+         {
+          "rights": "Creative Commons Attribution 4.0 International",
+          "rightsUri": "https://creativecommons.org/licenses/by/4.0/legalcode",
+          "schemeUri": "https://spdx.org/licenses/",
+          "rightsIdentifier": "cc-by-4.0",
+          "rightsIdentifierScheme": "SPDX"
+         }
+        ],
+        "contentUrl": null,
+        "relatedIdentifiers": [
+         {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "10.1596/1813-9450-11321",
+          "resourceTypeGeneral": "Text",
+          "relatedIdentifierType": "DOI"
+         },
+         {
+          "relationType": "IsVersionOf",
+          "relatedIdentifier": "10.5281/zenodo.20424536",
+          "relatedIdentifierType": "DOI"
+         }
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "public-record",
+    "findings": [
+     "has-parent-record"
+    ]
+   }
+  },
+  {
+   "name": "public record naming a newer record (captured 2026-11-11)",
+   "input": "10.6084/m9.figshare.34978270.v1",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.6084/m9.figshare.34978270.v1",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://figshare.com/articles/dataset/QualiaSkin/34978270/1"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-11-11T06:59:15Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.6084/m9.figshare.34978270.v1",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     {
+      "data": {
+       "attributes": {
+        "state": "findable",
+        "titles": [
+         {
+          "title": "QualiaSkin"
+         }
+        ],
+        "version": "1",
+        "publicationYear": 2026,
+        "publisher": "figshare",
+        "registered": "2026-11-11T06:59:15.000Z",
+        "updated": "2026-11-11T07:07:25.000Z",
+        "url": "https://figshare.com/articles/dataset/QualiaSkin/34978270/1",
+        "sizes": [
+         "4316401 Bytes"
+        ],
+        "formats": [],
+        "rightsList": [
+         {
+          "rights": "Creative Commons Attribution 4.0 International",
+          "rightsUri": "https://creativecommons.org/licenses/by/4.0/legalcode",
+          "schemeUri": "https://spdx.org/licenses/",
+          "rightsIdentifier": "cc-by-4.0",
+          "rightsIdentifierScheme": "SPDX"
+         }
+        ],
+        "contentUrl": null,
+        "relatedIdentifiers": [
+         {
+          "relationType": "IsPreviousVersionOf",
+          "relatedIdentifier": "10.6084/m9.figshare.34978270",
+          "relatedIdentifierType": "DOI"
+         }
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "public-record-newer-named",
+    "findings": [
+     "names-newer-record"
+    ]
+   }
+  },
+  {
+   "name": "Crossref article with an addendum notice (captured 2026-11-11; the notice id is replaced with a placeholder)",
+   "input": "https://dx.doi.org/10.1038/sdata.2016.18",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.1038/sdata.2016.18",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://www.nature.com/articles/sdata201618"
+        },
+        "ttl": 86400,
+        "timestamp": "2023-01-04T12:47:01Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.1038/sdata.2016.18",
+       "RA": "Crossref"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     {
+      "message": {
+       "title": [
+        "The FAIR Guiding Principles for scientific data management and stewardship"
+       ],
+       "issued": {
+        "date-parts": [
+         [
+          2016,
+          3,
+          15
+         ]
+        ]
+       },
+       "publisher": "Springer Science and Business Media LLC",
+       "created": {
+        "date-parts": [
+         [
+          2016,
+          3,
+          15
+         ]
+        ],
+        "date-time": "2016-03-15T10:23:08Z",
+        "timestamp": 1458037388000
+       },
+       "deposited": {
+        "date-parts": [
+         [
+          2023,
+          1,
+          4
+         ]
+        ],
+        "date-time": "2023-01-04T07:47:12Z",
+        "timestamp": 1672818432000
+       },
+       "resource": {
+        "primary": {
+         "URL": "https://www.nature.com/articles/sdata201618"
+        }
+       },
+       "type": "journal-article",
+       "updated-by": [
+        {
+         "DOI": "10.1038/example-addendum",
+         "type": "addendum",
+         "label": "Addendum"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "public-record-update-notice",
+    "findings": [
+     "has-update-notice"
+    ]
+   }
+  },
+  {
+   "name": "Crossref article, no update notice (synthetic: notice removed)",
+   "input": "10.1038/sdata.2016.18",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.1038/sdata.2016.18",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://www.nature.com/articles/sdata201618"
+        },
+        "ttl": 86400,
+        "timestamp": "2023-01-04T12:47:01Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.1038/sdata.2016.18",
+       "RA": "Crossref"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     {
+      "message": {
+       "title": [
+        "The FAIR Guiding Principles for scientific data management and stewardship"
+       ],
+       "issued": {
+        "date-parts": [
+         [
+          2016,
+          3,
+          15
+         ]
+        ]
+       },
+       "publisher": "Springer Science and Business Media LLC",
+       "created": {
+        "date-parts": [
+         [
+          2016,
+          3,
+          15
+         ]
+        ],
+        "date-time": "2016-03-15T10:23:08Z",
+        "timestamp": 1458037388000
+       },
+       "deposited": {
+        "date-parts": [
+         [
+          2023,
+          1,
+          4
+         ]
+        ],
+        "date-time": "2023-01-04T07:47:12Z",
+        "timestamp": 1672818432000
+       },
+       "resource": {
+        "primary": {
+         "URL": "https://www.nature.com/articles/sdata201618"
+        }
+       },
+       "type": "journal-article"
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "public-record",
+    "findings": []
+   }
+  },
+  {
+   "name": "unregistered DOI (captured 2026-11-11)",
+   "input": "10.48690/does-not-exist-zz9",
+   "sources": {
+    "handle": [
+     404,
+     {
+      "responseCode": 100,
+      "handle": "10.48690/does-not-exist-zz9"
+     }
+    ]
+   },
+   "expect": {
+    "code": "not-registered",
+    "findings": []
+   }
+  },
+  {
+   "name": "not a DOI",
+   "input": "landscan mosaic v2",
+   "sources": {},
+   "expect": {
+    "code": "not-a-doi",
+    "findings": []
+   }
+  },
+  {
+   "name": "not a DOI: prefix too short",
+   "input": "10.12/abc",
+   "sources": {},
+   "expect": {
+    "code": "not-a-doi",
+    "findings": []
+   }
+  },
+  {
+   "name": "handle service did not answer",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     0,
+     null
+    ]
+   },
+   "expect": {
+    "code": "could-not-read",
+    "findings": []
+   }
+  },
+  {
+   "name": "handle service error",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     500,
+     null
+    ]
+   },
+   "expect": {
+    "code": "could-not-read",
+    "findings": []
+   }
+  },
+  {
+   "name": "agency lookup failed",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/he9y-d243",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-09-15T11:30:09Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     503,
+     null
+    ]
+   },
+   "expect": {
+    "code": "could-not-read",
+    "findings": [
+     "landing-is-site-root"
+    ]
+   }
+  },
+  {
+   "name": "registry error is unknown, never absent",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/he9y-d243",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-09-15T11:30:09Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "x",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     500,
+     null
+    ]
+   },
+   "expect": {
+    "code": "could-not-read",
+    "findings": [
+     "landing-is-site-root"
+    ]
+   }
+  },
+  {
+   "name": "registry 200 with an unreadable body is unknown",
+   "input": "10.48690/he9y-d243",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.48690/he9y-d243",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://landscan.ornl.gov"
+        },
+        "ttl": 86400,
+        "timestamp": "2026-09-15T11:30:09Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "x",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     null
+    ]
+   },
+   "expect": {
+    "code": "could-not-read",
+    "findings": [
+     "landing-is-site-root"
+    ]
+   }
+  },
+  {
+   "name": "agency this tool does not read",
+   "input": "10.1234/abc",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.1234/abc",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://example.org/item/abc"
+        },
+        "timestamp": "2020-01-01T00:00:00Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.1234/abc",
+       "RA": "mEDRA"
+      }
+     ]
+    ]
+   },
+   "expect": {
+    "code": "agency-not-read",
+    "findings": []
+   }
+  },
+  {
+   "name": "synthetic: obsoleted, no version field, addresses differ, direct file address",
+   "input": "10.1234/grid.v1",
+   "sources": {
+    "handle": [
+     200,
+     {
+      "responseCode": 1,
+      "handle": "10.1234/grid.v1",
+      "values": [
+       {
+        "index": 1,
+        "type": "URL",
+        "data": {
+         "format": "string",
+         "value": "https://old.example.org/grid"
+        },
+        "timestamp": "2024-01-02T00:00:00Z"
+       }
+      ]
+     }
+    ],
+    "agency": [
+     200,
+     [
+      {
+       "DOI": "10.1234/grid.v1",
+       "RA": "DataCite"
+      }
+     ]
+    ],
+    "registry": [
+     200,
+     {
+      "data": {
+       "attributes": {
+        "state": "findable",
+        "titles": [
+         {
+          "title": "Example grid"
+         }
+        ],
+        "version": null,
+        "publicationYear": 2024,
+        "publisher": {
+         "name": "Example Lab"
+        },
+        "registered": "2024-01-02T00:00:00.000Z",
+        "updated": "2024-01-03T00:00:00.000Z",
+        "url": "https://data.example.org/grid/v1",
+        "sizes": [],
+        "formats": [],
+        "rightsList": [],
+        "contentUrl": [
+         "https://files.example.org/grid_v1.tif"
+        ],
+        "relatedIdentifiers": [
+         {
+          "relationType": "IsObsoletedBy",
+          "relatedIdentifier": "10.1234/grid.v2",
+          "relatedIdentifierType": "DOI"
+         },
+         {
+          "relationType": "HasVersion",
+          "relatedIdentifier": "10.1234/grid.v0",
+          "relatedIdentifierType": "DOI"
+         }
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "expect": {
+    "code": "public-record-newer-named",
+    "findings": [
+     "addresses-differ",
+     "direct-file-urls",
+     "lists-versions",
+     "names-newer-record",
+     "no-version-field"
+    ]
+   }
+  }
+ ],
+ "host_cases": [
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    403
+   ],
+   "siblings": [
+    [
+     "https://h.example/b/",
+     200
+    ],
+    [
+     "https://h.example/c/",
+     200
+    ]
+   ],
+   "expect": "refused-dataset-level"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    403
+   ],
+   "siblings": [
+    [
+     "https://h.example/b/",
+     403
+    ]
+   ],
+   "expect": "refused-host-level"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    403
+   ],
+   "siblings": [
+    [
+     "https://other.example/b/",
+     200
+    ]
+   ],
+   "expect": "refused-no-comparison"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    403
+   ],
+   "siblings": [],
+   "expect": "refused-no-comparison"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    403
+   ],
+   "siblings": [
+    [
+     "https://h.example/b/",
+     404
+    ],
+    [
+     "https://h.example/c/",
+     403
+    ]
+   ],
+   "expect": "refused-mixed"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    200
+   ],
+   "siblings": [],
+   "expect": "served"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    206
+   ],
+   "siblings": [],
+   "expect": "served"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    302
+   ],
+   "siblings": [
+    [
+     "https://h.example/b/",
+     200
+    ]
+   ],
+   "expect": "redirected"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    404
+   ],
+   "siblings": [
+    [
+     "https://h.example/b/",
+     200
+    ]
+   ],
+   "expect": "not-there"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    0
+   ],
+   "siblings": [
+    [
+     "https://h.example/b/",
+     200
+    ]
+   ],
+   "expect": "no-answer"
+  },
+  {
+   "target": [
+    "https://h.example/a/f.tif",
+    500
+   ],
+   "siblings": [],
+   "expect": "other"
+  }
+ ]
+}

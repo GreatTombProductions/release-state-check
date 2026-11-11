@@ -1,0 +1,234 @@
+{
+ "read_date": "2026-11-11",
+ "note": "What public sources answered to one machine on the date shown. Release states change; re-run before relying on any line. No form was submitted, no account used, no refused address retried by another route. Times are UTC; an entry with a date only was read that day without a recorded clock time.",
+ "reads": [
+  {
+   "id": "landscan-mosaic-time-series-v2",
+   "observations": [
+    {
+     "at": "2026-11-11T07:42:02Z",
+     "what": "Catalogue record",
+     "url": "https://www.osti.gov/api/v1/records?doi=10.48690/he9y-d243",
+     "http": 200,
+     "seen": {
+      "osti_id": "17426810",
+      "title": "LandScan Mosaic Time Series: Global Daytime, Nighttime, and Ambient Population Estimates (1975–2025) (Version 2.0)",
+      "doi": "10.48690/he9y-d243",
+      "publication_date": "2026-10-01",
+      "entry_date": "2026-11-07"
+     }
+    },
+    {
+     "at": "2026-11-11T07:41:24Z",
+     "what": "DOI resolver",
+     "url": "https://doi.org/api/handles/10.48690/he9y-d243",
+     "http": 200,
+     "seen": {
+      "points_at": "https://landscan.ornl.gov",
+      "address_last_set": "2026-09-15T11:30:09Z"
+     }
+    },
+    {
+     "at": "2026-11-11T07:41:24Z",
+     "what": "Registration agency",
+     "url": "https://doi.org/doiRA/10.48690/he9y-d243",
+     "http": 200,
+     "seen": {
+      "agency": "DataCite"
+     }
+    },
+    {
+     "at": "2026-11-11T07:41:24Z",
+     "what": "DataCite public registry, advertised version",
+     "url": "https://api.datacite.org/dois/10.48690/he9y-d243",
+     "http": 404,
+     "seen": {}
+    },
+    {
+     "at": "2026-11-11T07:41:24Z",
+     "what": "DataCite public registry, sibling: version 1.0 time series",
+     "url": "https://api.datacite.org/dois/10.48690/lsm/zew2-1n91",
+     "http": 200,
+     "seen": {
+      "state": "findable",
+      "title": "LandScan Mosaic Annual Global Ambient Population Time Series, Version 1.0: 1975–2024",
+      "version": "1.0",
+      "registered": "2026-05-26",
+      "declared_size": "380 GB",
+      "points_at": "https://landscan.ornl.gov"
+     }
+    },
+    {
+     "at": "2026-11-11T07:41:24Z",
+     "what": "DataCite public registry, sibling: 2025 product",
+     "url": "https://api.datacite.org/dois/10.48690/lsm/1mhc-aq17",
+     "http": 200,
+     "seen": {
+      "state": "findable",
+      "title": "LandScan Mosaic 2025: Global Dynamic Population",
+      "version": "1.0",
+      "registered": "2026-08-06"
+     }
+    },
+    {
+     "at": "2026-11-11",
+     "what": "DataCite public registry, records under prefix 10.48690",
+     "url": "https://api.datacite.org/dois?prefix=10.48690&page%5Bsize%5D=1",
+     "http": 200,
+     "seen": {
+      "public_records": 86
+     }
+    },
+    {
+     "at": "2026-11-11",
+     "what": "Download form script",
+     "url": "https://landscan.ornl.gov/assets/index-D8WEj_Vq.js",
+     "http": 200,
+     "seen": {
+      "sha256": "f7809b8382ff6c0e1fc04afac65b64768c1748501d5dc5dceead47b3652457fd",
+      "bytes": 1828884,
+      "product_list": [
+       "LandScan Global",
+       "LandScan Mosaic Time Series",
+       "LandScan Mosaic Global"
+      ],
+      "time_series_years": {
+       "count": 51,
+       "first": 1975,
+       "last": 2025
+      },
+      "mosaic_global_years": [
+       2025
+      ],
+      "request_fields_for_time_series": [
+       "email",
+       "primary_use",
+       "sector",
+       "product=mosaic_timeseries",
+       "productModifier1=<year>"
+      ],
+      "version_field": "none",
+      "day_night_ambient_field": "none"
+     }
+    },
+    {
+     "at": "2026-11-11",
+     "what": "File download",
+     "url": null,
+     "http": null,
+     "seen": {
+      "status": "not tested",
+      "reason": "the form asks for an email address and affiliation; it was not submitted"
+     }
+    }
+   ]
+  },
+  {
+   "id": "wsf-tracker-2016-2026",
+   "observations": [
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "DataCite public registry, producer DOI",
+     "url": "https://api.datacite.org/dois/10.15489/3fa4d2j0tk78",
+     "http": 200,
+     "seen": {
+      "state": "findable",
+      "title": "World Settlement Footprint (WSF) Tracker - Global, 2016-2026",
+      "licence": "cc-by-4.0",
+      "points_at": "https://geoservice.dlr.de/data-assets/3fa4d2j0tk78.html"
+     }
+    },
+    {
+     "at": "2026-11-11",
+     "what": "Producer catalogue item (STAC), file asset",
+     "url": "https://geoservice.dlr.de/eoc/ogc/stac/v1/collections/WSF_TRACKER/items?limit=1",
+     "http": 200,
+     "seen": {
+      "asset": "https://download.geoservice.dlr.de/WSFTRACKER/files/WSF_Tracker_20160701-20260101.tif",
+      "item_updated": "2026-10-26"
+     }
+    },
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "Producer file",
+     "url": "https://download.geoservice.dlr.de/WSFTRACKER/files/WSF_Tracker_20160701-20260101.tif",
+     "http": 403,
+     "seen": {}
+    },
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "Producer directory linked from the dataset page",
+     "url": "https://download.geoservice.dlr.de/WSFTRACKER/files/",
+     "http": 403,
+     "seen": {}
+    },
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "Sibling dataset, same host",
+     "url": "https://download.geoservice.dlr.de/WSF2019/files/",
+     "http": 200,
+     "seen": {}
+    },
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "Sibling dataset, same host",
+     "url": "https://download.geoservice.dlr.de/WSF_EVO/files/",
+     "http": 200,
+     "seen": {}
+    },
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "Sibling dataset, same host",
+     "url": "https://download.geoservice.dlr.de/WSF2015/files/",
+     "http": 200,
+     "seen": {}
+    },
+    {
+     "at": "2026-11-11T07:43:06Z",
+     "what": "Producer web coverage service, window 45.74–45.78 N, 4.82–4.86 E",
+     "url": "https://geoservice.dlr.de/eoc/land/wcs?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=land__WSF_TRACKER&FORMAT=image/tiff&SUBSET=Lat(45.74,45.78)&SUBSET=Long(4.82,4.86)",
+     "http": 200,
+     "seen": {
+      "bytes": 201088,
+      "sha256": "1ce26c3ab460e8b4cdf0469606663f47d369c27eb2fc4e9026a3b09286e78ab9",
+      "shape": [
+       445,
+       445
+      ]
+     }
+    },
+    {
+     "at": "2026-11-11T07:42:45Z",
+     "what": "Co-producer record",
+     "url": "https://api.datacite.org/dois/10.5281/zenodo.20424537",
+     "http": 200,
+     "seen": {
+      "state": "findable",
+      "version": "20260101",
+      "licence": "cc-by-4.0",
+      "files_in_record": [
+       "README.md"
+      ],
+      "readme_names_copy_at": "https://source.coop/mindearth/wsf"
+     }
+    },
+    {
+     "at": "2026-11-11T07:43:33Z",
+     "what": "Co-producer copy, same window, no sign-in",
+     "url": "https://data.source.coop/mindearth/wsf/World_WSF_20160701-20260101.zarr",
+     "http": 200,
+     "seen": {
+      "identical_pixels": 198025,
+      "compared_pixels": 198025,
+      "grid_offset_px": {
+       "col": 1.1e-06,
+       "row": 1.9e-07
+      },
+      "values_in_window": "0–20",
+      "script": "examples/compare_mirror_window.py"
+     }
+    }
+   ]
+  }
+ ]
+}

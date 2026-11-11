@@ -1,0 +1,38 @@
+{
+  "name": "Release State Check",
+  "short_name": "release-state-check",
+  "slug": "release-state-check",
+  "description": "Paste a dataset DOI and see whether the release behind it has been published or only announced: does it resolve, does its registry have a public record, which version does the record name, and is a newer record linked — read live, with the time of the read.",
+  "url": "https://greattombproductions.github.io/release-state-check/",
+  "repo": "https://github.com/GreatTombProductions/release-state-check",
+  "github": "https://github.com/GreatTombProductions/release-state-check",
+  "data_source": "Live public reads of doi.org (resolver and agency lookup), the DataCite public API and the Crossref public API, made from the visitor's browser; two worked reads of public dataset surfaces dated 2026-11-11",
+  "data_url": "https://greattombproductions.github.io/release-state-check/method.html",
+  "records": "0 stored records; each check is a live read. 2 worked reads with dated receipts",
+  "detail": "Static client-side reader. Reports one of: not registered; registered with no public record (the state a DOI is in when created ahead of release or withdrawn from listing); public record; public record that names a newer one; public record with a publisher update notice attached; unknown when a source fails to answer — an error is never shown as a state. Also flags a DOI that points at a site's front page instead of a dataset page, a record with no version field, differing addresses, and a record that is one version under a parent. A method page gives three delivery-side checks the page cannot do (read the download form, compare a refused file with sibling datasets on the same host, compare a window before trusting a mirror) and two worked reads. A standard-library Python script provides the same reader and the sibling-host comparison for the command line. Reads DataCite and Crossref only; never requests a data file; not a monitor.",
+  "asymmetry": "Whoever holds the working copy or the current vintage benefits from the gap between what a public catalogue advertises and what the download site serves. A reseller can sell 'current' access while the public path stalls, and an identifier created ahead of release reads as 'published' in every citation that carries it. A planner, researcher, journalist or small-firm analyst deciding whether to wait, cite, buy access or give up cannot tell 'not yet published' from 'published and not served' — both look like an empty portal.",
+  "pipeline_note": "No pipeline. Reading rules are pure functions in core.js with a Python twin in check.py; 18 recorded and synthetic source answers plus 11 host cases run through both and must agree. Playwright smoke (sources answered from the same case file; dated header, deep links, unknown-on-failure, markup escaping, 390px width, no requests outside the three sources) run on the staged deploy and the live URL. Worked reads carry a receipts file of addresses and statuses.",
+  "search_modes": [
+    "is this dataset released",
+    "DOI resolves but no record",
+    "dataset version not available",
+    "download link 403 but dataset is public",
+    "can I trust a data mirror"
+  ],
+  "search_terms": [
+    "DOI lookup",
+    "dataset not published yet",
+    "registered DOI not findable",
+    "portal serves older version than advertised",
+    "data catalogue lists a version that is not downloadable"
+  ],
+  "released_date": "2026-11-11",
+  "status": "released",
+  "deploy_branch": "gh-pages",
+  "deploy_method": "static",
+  "feedback_categories": [
+    "methodology",
+    "bug",
+    "feature"
+  ]
+}

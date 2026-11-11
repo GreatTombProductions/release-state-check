@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Release State Check reads — method, delivery checks, worked reads</title>
+<meta name="description" content="What Release State Check asks of doi.org, DataCite and Crossref, the three delivery-side checks it cannot do for you, and two worked reads dated 11 November 2026.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Method, limits and worked reads</p>
+    <h1><a href="./">Release State Check</a></h1>
+    <p class="lede">What the page asks, what the answers mean, and the part you have to do yourself.</p>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <section class="card">
+    <h2>What the page reads</h2>
+    <p>Your browser makes up to four requests, straight to the sources. Nothing passes through this site.</p>
+    <ol>
+      <li><strong>Does the DOI resolve?</strong> <code>doi.org/api/handles/…</code> returns the address a DOI points at and when that address was last set. No record there means the DOI was never registered.</li>
+      <li><strong>Which agency holds it?</strong> <code>doi.org/doiRA/…</code> names the registration agency. The page reads two: DataCite, which holds most dataset DOIs, and Crossref, which holds most article DOIs. Any other agency is reported as not read.</li>
+      <li><strong>Is there a public record?</strong> DataCite’s public API (<code>api.datacite.org/dois/…</code>) or Crossref’s (<code>api.crossref.org/works/…</code>). A record gives the title, version field, dates, declared size, licence and links to other versions.</li>
+      <li><strong>If DataCite has no record, are there siblings?</strong> A count of public records under the same publisher prefix. This separates “this record is not public” from “this publisher lists nothing publicly”.</li>
+    </ol>
+    <h3>Why “resolves, no public record” means something</h3>
+    <p>DataCite gives every DOI one of three states. A <em>draft</em> does not resolve. A <em>findable</em> DOI resolves and has public metadata. A <em>registered</em> DOI resolves, but its metadata is “not findable in DataCite Commons and … not retrievable via the Public API”. So a DataCite DOI that resolves and has no public record is in the registered state. DataCite’s documentation names two routes into it: a record that has not yet been made public, and a public record moved back because “a DOI is created by mistake or content is retracted”. The page reports the state. It cannot see which route was taken.</p>
+    <h3>Rules it keeps</h3>
+    <ul>
+      <li>A source that fails to answer gives <strong>Unknown</strong>. An error is never shown as “no record”.</li>
+      <li>Sizes, formats and licences are printed as the publisher declared them. Nothing is measured.</li>
+      <li>“Names a newer record” comes only from the record’s own links (previous-version-of, obsoleted-by). A Crossref update notice (correction, addendum, retraction) is reported separately, as an update attached. The page does not guess from titles or dates.</li>
+      <li>When a record is one version under a parent, the page says so and links the parent. It does not work out which version is the latest.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="delivery">
+    <h2>The three delivery checks</h2>
+    <p>A registry record is a declaration. Whether the files reach you is decided somewhere else. A browser page is not allowed to test another site’s downloads, so these are yours to run.</p>
+
+    <h3>1. Read the download form, not the description</h3>
+    <p>Open the download page and look at what the form lets you choose: the product list, the years, any version or variant control. That list is what is served. Compare it with the catalogue title. If the title promises day, night and average layers for 1975–2025 and the form offers one product and a year, you have learned something no description will tell you.</p>
+    <p>If you are comfortable with browser developer tools, open the Network tab and watch what the form sends. If the request carries no version field, you cannot choose a version, whatever the page text says.</p>
+
+    <h3>2. If a file address refuses you, try a sibling on the same host</h3>
+    <p>A 403 has two very different causes: the dataset is closed, or the host refuses your network. Ask the same host for a different dataset. If the sibling answers and yours does not, the refusal is about the dataset. Then the honest options are to wait, to ask the publisher, or to use a source the publisher’s partners offer. It is not a signal to look for a way around.</p>
+    <pre>python3 check.py hosts "https://HOST/DATASET-A/file.tif" \
+  --sibling "https://HOST/DATASET-B/" --sibling "https://HOST/DATASET-C/"</pre>
+    <p><a href="check.py" download>check.py</a> needs Python 3 and nothing else. It makes one request per address, does not follow redirects (a redirect can be a login gate) and does not retry.</p>
+
+    <h3>3. Before trusting a mirror, compare a window</h3>
+    <p>A copy on someone else’s host may be the same data. Find out before you build on it. Ask the producer’s own map service for a small area at native resolution, read the same cells from the mirror, and compare cell by cell. A full match on a window lined up to the grid is good evidence the values are the producer’s. It is not proof that the files are identical, and it says nothing about areas you did not compare.</p>
+    <p>Also confirm who runs the mirror. A copy published by a named co-producer under a stated licence is a source. An anonymous re-upload is not.</p>
+  </section>
+
+  <section class="card" id="reads">
+    <h2>Two worked reads, 11 November 2026</h2>
+    <p>Both were read from public sources on that date. They show the method. They are not a standing report on either dataset: states change, and a read is only good for its date. Every address and status is in <a href="receipts/2026-11-11.json">receipts/2026-11-11.json</a>. Neither is a complaint about the publisher. Creating an identifier ahead of a release is ordinary practice.</p>
+
+    <h3>LandScan Mosaic Time Series, version 2.0 <span class="tag">registry and form disagree with the catalogue</span></h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Surface</th><th>What it said</th></tr></thead>
+      <tbody>
+        <tr><td>Catalogue (OSTI record 17426810)</td><td>Lists “LandScan Mosaic Time Series: Global Daytime, Nighttime, and Ambient Population Estimates (1975–2025) (Version 2.0)”, DOI 10.48690/he9y-d243, publication date 1 October 2026.</td></tr>
+        <tr><td>DOI resolver</td><td>Resolves to the portal’s front page, landscan.ornl.gov. Address set 15 September 2026.</td></tr>
+        <tr><td>DataCite public registry</td><td>No record for that DOI. The same prefix has 86 public records, among them the version 1.0 time series (1975–2024) and the separate 2025 product.</td></tr>
+        <tr><td>Download form</td><td>“LandScan Mosaic Time Series” offers 51 years, 1975 to 2025. The request it sends carries a product name and a year. There is no version field and no day, night or average field.</td></tr>
+        <tr><td>Files</td><td><span class="tag gap">not tested</span> The form asks for an email address and affiliation. It was not submitted.</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>What a reader can and cannot conclude.</strong> The form’s year range now matches the version 2.0 title and goes one year past the version 1.0 record. The registry record for version 2.0 is still not public, and the form names no version. So from public surfaces alone you cannot tell which version a given year’s file belongs to, or whether day and night layers come with it. Someone citing the version 2.0 DOI today is citing a record nobody outside the publisher can read. If the version matters to your work, look inside the first file you download and write down what you find, and ask the publisher which version the form serves.</p>
+
+    <h3>World Settlement Footprint Tracker, 2016–2026 <span class="tag">public record, producer file refused, co-producer copy matches</span></h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Surface</th><th>What it said</th></tr></thead>
+      <tbody>
+        <tr><td>DataCite public registry</td><td>Public record for 10.15489/3fa4d2j0tk78, licence declared CC BY 4.0, pointing at the producer’s dataset page.</td></tr>
+        <tr><td>Producer’s catalogue</td><td>Lists one file for the dataset on the producer’s download host.</td></tr>
+        <tr><td>That file, and its directory</td><td>403 refused.</td></tr>
+        <tr><td>Three sibling datasets, same host, same machine, same run</td><td>200 served. The refusal is about this dataset, not about the network asking.</td></tr>
+        <tr><td>Producer’s map service (WCS)</td><td>Serves the dataset. A 445 × 445 window over Lyon came back at native resolution.</td></tr>
+        <tr><td>Co-producer’s record (10.5281/zenodo.20424537)</td><td>Public record, version 20260101, CC BY 4.0. The record holds a README only; the README names a copy on Source Cooperative and says the dataset was developed by the producer together with the mirror’s host.</td></tr>
+        <tr><td>Co-producer’s copy, same window</td><td>Readable with no sign-in. 198,025 of 198,025 cells identical to the producer’s window. The two grids line up to within two millionths of a cell.</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>What a reader can and cannot conclude.</strong> The release exists and is public. The producer’s bulk file was closed on this date while the producer’s own map service and a co-producer’s copy served the same values. For values, the copy is a sound source, cited as the README asks. Not shown: that the copy and the refused file are the same bytes, or that cells outside the window match. Note also what the co-producer’s public record contained: a README. A public record told you the dataset was declared, and you still had to find where the data was.</p>
+    <p>The comparison script is <a href="examples/compare_mirror_window.py">examples/compare_mirror_window.py</a>. It needs <code>numpy</code>, <code>rasterio</code> and <code>zarr</code> version 3 and is written for this one dataset; treat it as a pattern.</p>
+  </section>
+
+  <section class="card" id="limits">
+    <h2>What this is not</h2>
+    <ul>
+      <li><strong>Not an availability service.</strong> Nothing runs after you close the page. It will not tell you when a record becomes public.</li>
+      <li><strong>Not a verdict on a publisher.</strong> It reports states, not reasons.</li>
+      <li><strong>Not a download check.</strong> The page never requests a data file.</li>
+      <li><strong>Not complete.</strong> DOIs held by agencies other than DataCite and Crossref are reported as not read. Datasets with no DOI are out of scope for the page; the delivery checks still apply.</li>
+      <li><strong>Not a way around a refusal.</strong> A 403 is recorded as a 403.</li>
+    </ul>
+    <p>If the sources change their response formats, the page reports Unknown instead of guessing. The reading rules have a test file that runs through both the page’s code and <code>check.py</code>, so the two cannot quietly disagree.</p>
+  </section>
+
+  <section class="card" id="sources">
+    <h2>Sources</h2>
+    <ul>
+      <li>DOI resolver and agency lookup: <a href="https://www.doi.org/the-identifier/resources/factsheets/doi-resolution-documentation">doi.org resolution documentation</a></li>
+      <li>DataCite DOI states (draft, registered, findable): <a href="https://support.datacite.org/docs/doi-states">support.datacite.org/docs/doi-states</a>, read 11 November 2026</li>
+      <li>DataCite public API: <a href="https://support.datacite.org/docs/api">support.datacite.org/docs/api</a></li>
+      <li>Crossref public API: <a href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/">crossref.org REST API documentation</a></li>
+      <li>Worked reads: the addresses in <a href="receipts/2026-11-11.json">receipts/2026-11-11.json</a></li>
+    </ul>
+    <p>If a publisher or a data librarian is available to you, they are the better source on <em>why</em> a record is not public. This page only helps you arrive with the right question.</p>
+  </section>
+</main>
+<footer class="wrap foot"><p><a href="./">Back to the check</a> · <a href="https://github.com/GreatTombProductions/release-state-check">Code</a> (MIT)</p></footer>
+</body>
+</html>
